@@ -3,24 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		ED18257F25C4096400FCD100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18257E25C4096400FCD100 /* AppDelegate.swift */; };
-		ED18258125C4096400FCD100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18258025C4096400FCD100 /* ViewController.swift */; };
 		ED18258325C4096600FCD100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED18258225C4096600FCD100 /* Assets.xcassets */; };
 		ED18258625C4096600FCD100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED18258425C4096600FCD100 /* Main.storyboard */; };
+		ED18259125C4098C00FCD100 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = ED18259025C4098C00FCD100 /* SwiftSoup */; };
+		ED18259525C40ACC00FCD100 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = ED18259425C40ACC00FCD100 /* Then */; };
+		ED18259C25C4420A00FCD100 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18259B25C4420A00FCD100 /* Int+Extensions.swift */; };
+		ED1825A025C4422D00FCD100 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18259F25C4422D00FCD100 /* Date+Extensions.swift */; };
+		ED8F6FE425C461320099D861 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED8F6FE625C461320099D861 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED18257B25C4096400FCD100 /* jandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED18257E25C4096400FCD100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED18258025C4096400FCD100 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED18258225C4096600FCD100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED18258525C4096600FCD100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED18258725C4096600FCD100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED18258825C4096600FCD100 /* jandi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jandi.entitlements; sourceTree = "<group>"; };
+		ED18259B25C4420A00FCD100 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		ED18259F25C4422D00FCD100 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		ED8F6FDD25C460BE0099D861 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		ED8F6FE525C461320099D861 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ED8F6FE825C461360099D861 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED18259125C4098C00FCD100 /* SwiftSoup in Frameworks */,
+				ED18259525C40ACC00FCD100 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,7 +47,8 @@
 		ED18257225C4096400FCD100 = {
 			isa = PBXGroup;
 			children = (
-				ED18257D25C4096400FCD100 /* jandi */,
+				ED8F6FDF25C460DA0099D861 /* Supporting FIles */,
+				ED18257D25C4096400FCD100 /* Sources */,
 				ED18257C25C4096400FCD100 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,17 +61,34 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED18257D25C4096400FCD100 /* jandi */ = {
+		ED18257D25C4096400FCD100 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ED18259A25C441FA00FCD100 /* Extensions */,
 				ED18257E25C4096400FCD100 /* AppDelegate.swift */,
-				ED18258025C4096400FCD100 /* ViewController.swift */,
 				ED18258225C4096600FCD100 /* Assets.xcassets */,
 				ED18258425C4096600FCD100 /* Main.storyboard */,
 				ED18258725C4096600FCD100 /* Info.plist */,
 				ED18258825C4096600FCD100 /* jandi.entitlements */,
 			);
-			path = jandi;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		ED18259A25C441FA00FCD100 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED18259B25C4420A00FCD100 /* Int+Extensions.swift */,
+				ED18259F25C4422D00FCD100 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ED8F6FDF25C460DA0099D861 /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				ED8F6FE625C461320099D861 /* Localizable.strings */,
+			);
+			path = "Supporting FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,6 +107,10 @@
 			dependencies = (
 			);
 			name = jandi;
+			packageProductDependencies = (
+				ED18259025C4098C00FCD100 /* SwiftSoup */,
+				ED18259425C40ACC00FCD100 /* Then */,
+			);
 			productName = jandi;
 			productReference = ED18257B25C4096400FCD100 /* jandi.app */;
 			productType = "com.apple.product-type.application";
@@ -104,8 +136,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = ED18257225C4096400FCD100;
+			packageReferences = (
+				ED18258F25C4098C00FCD100 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				ED18259325C40ACC00FCD100 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = ED18257C25C4096400FCD100 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED18258325C4096600FCD100 /* Assets.xcassets in Resources */,
+				ED8F6FE425C461320099D861 /* Localizable.strings in Resources */,
 				ED18258625C4096600FCD100 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,7 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED18258125C4096400FCD100 /* ViewController.swift in Sources */,
+				ED18259C25C4420A00FCD100 /* Int+Extensions.swift in Sources */,
+				ED1825A025C4422D00FCD100 /* Date+Extensions.swift in Sources */,
 				ED18257F25C4096400FCD100 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,8 +183,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				ED18258525C4096600FCD100 /* Base */,
+				ED8F6FDD25C460BE0099D861 /* ko */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED8F6FE625C461320099D861 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED8F6FE525C461320099D861 /* en */,
+				ED8F6FE825C461360099D861 /* ko */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -155,6 +204,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -216,6 +266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -271,12 +322,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = jandi/jandi.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Sources/jandi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U6GQL8JQMT;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = jandi/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -292,12 +343,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = jandi/jandi.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Sources/jandi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U6GQL8JQMT;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = jandi/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -330,6 +381,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED18258F25C4098C00FCD100 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+		ED18259325C40ACC00FCD100 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED18259025C4098C00FCD100 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED18258F25C4098C00FCD100 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		ED18259425C40ACC00FCD100 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED18259325C40ACC00FCD100 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED18257325C4096400FCD100 /* Project object */;
 }

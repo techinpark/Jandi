@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  jandi
+
+  Created by Fernando on 2021/01/30.
+  
+*/
+
+"wellcome_user_message" = "👋 안녕,  @${username}";
+"refresh" = "⏳ 새로고침";
+"change_username" = "⚙️ 아이디 변경";
+"textfield_placeholder" = "Github 아이디";
+"username_description" = "아이디를 입력해주세요";
+"change_username_description" = "아이디를 변경합니다";
+"information" = "Github 아이디를 입력해주세요.\n입력해주신 정보를 기반으로 커밋정보를 가져옵니다";
+"ok" = "확인";
+"cancel" = "취소";
+"error" = "⚠️ 오류";
+"quit" = "🚪 닫기";

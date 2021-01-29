@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  jandi
+
+  Created by Fernando on 2021/01/30.
+  
+*/
+
+"wellcome_user_message" = "👋 Hello,  @${username}";
+"refresh" = "⏳ Refresh";
+"change_username" = "⚙️ Change username";
+"textfield_placeholder" = "GitHub username";
+"username_description" = "Set username";
+"change_username_description" = "Change username";
+"information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
+"ok" = "Okay";
+"cancel" = "Cancel";
+"error" = "⚠️ Error";
+"quit" = "🚪 Quit";
