@@ -28,12 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let refreshMenuItem = NSMenuItem().then {
         $0.title = Localized.refresh
         $0.action = #selector(onRefreshClick)
+        $0.keyEquivalent = "r"
         $0.tag = 2
     }
 
     private let changeUserMenuItem = NSMenuItem().then {
         $0.title = Localized.changeUsername
         $0.action = #selector(onChangeUsernameClick)
+        $0.keyEquivalent = "u"
         $0.tag = 3
     }
 
