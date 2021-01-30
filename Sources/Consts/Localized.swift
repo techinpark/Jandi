@@ -9,7 +9,7 @@ import Foundation
 
 enum Localized {
     static let placeholder = ""
-    static let hello = NSLocalizedString("wellcome_user_message", comment: "👋 안녕,  @${username}")
+    static let hello = NSLocalizedString("wellcome_user_message", comment: "👋 Hi,  @${username}")
     static let refresh = NSLocalizedString("refresh", comment: "refresh")
     static let changeUsername = NSLocalizedString("change_username", comment: "Change username")
     static let textFieldPlaceholder = NSLocalizedString("textfield_placeholder", comment: "Github username")
