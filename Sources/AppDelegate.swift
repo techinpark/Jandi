@@ -47,14 +47,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_: Notification) {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-
+        
+        setupUI()
+        
         if username.isEmpty {
             showChangeUsernameAlert()
             return
         }
-
-        setupUI()
+        
         fetchContributions(username: username)
         setupRefreshTimer()
     }
@@ -67,13 +67,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Setup UI
 
     private func setupUI() {
+        
         menu.addItem(.separator())
         menu.addItem(userMenuItem)
         menu.addItem(.separator())
         menu.addItem(refreshMenuItem)
         menu.addItem(changeUserMenuItem)
         menu.addItem(quitMenuItem)
-
+        
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem?.menu = menu
         userMenuItem.title = Localized.hello.replacingOccurrences(of: "${username}", with: username)
     }
