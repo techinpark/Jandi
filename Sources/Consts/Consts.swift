@@ -11,4 +11,5 @@ enum Consts {
     static let fetchCount = 10
     static let refreshInterval = 10
     static let contributionTag = 1
+    static let usernameDefaultKey = "username"
 }

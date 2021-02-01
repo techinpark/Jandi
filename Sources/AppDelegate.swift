@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var statusItem: NSStatusItem?
     private var refreshTimer: Timer?
-    private var username = UserDefaults.standard.string(forKey: "username") ?? ""
+    private var username = UserDefaults.standard.string(forKey: Consts.usernameDefaultKey) ?? ""
 
     private let menu = NSMenu().then {
         $0.title = ""
@@ -140,8 +140,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func changeUsername(withUsername username: String) {
-        UserDefaults.standard.setValue(username, forKey: "username")
-        self.username = UserDefaults.standard.string(forKey: "username")!
+        UserDefaults.standard.setValue(username, forKey: Consts.usernameDefaultKey)
+        self.username = UserDefaults.standard.string(forKey: Consts.usernameDefaultKey)!
 
         refresh()
     }
