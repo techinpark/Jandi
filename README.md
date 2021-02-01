@@ -23,6 +23,10 @@
 ## Author 
 - [techinpark](https://twitter.com/techinpark)
 
+## Install 
+
+<a href="https://apps.apple.com/us/app/jandi-growth-your-code/id1551460285?mt=12&amp;itsct=apps_box&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-US?size=250x83&amp;releaseDate=1612137600&h=21fffbfb6797aea42878a89d3fd093fd" alt="Download on the Mac App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
+
 
 ## License 
 `Jandi` is available under the MIT license. See the LICENSE file for more info.
