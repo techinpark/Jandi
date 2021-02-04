@@ -38,11 +38,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         $0.keyEquivalent = "u"
         $0.tag = 3
     }
+    
+    private let helpMenuItem = NSMenuItem().then {
+        $0.title = Localized.help
+        $0.action = #selector(onHelpClick)
+        $0.keyEquivalent = ""
+        $0.tag = 4
+    }
 
     private let quitMenuItem = NSMenuItem().then {
         $0.title = Localized.quit
         $0.action = #selector(onQuitClick)
-        $0.tag = 4
+        $0.tag = 5
         $0.keyEquivalent = "q"
     }
 
@@ -70,6 +77,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.addItem(.separator())
         menu.addItem(userMenuItem)
+        menu.addItem(.separator())
+        menu.addItem(helpMenuItem)
         menu.addItem(.separator())
         menu.addItem(refreshMenuItem)
         menu.addItem(changeUserMenuItem)
@@ -140,6 +149,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func onChangeUsernameClick() {
         showChangeUsernameAlert()
     }
+    
+    @objc func onHelpClick() {
+        let url = URL(string: "https://github.com/techinpark/Jandi")!
+        NSWorkspace.shared.open(url)
+    }
+
 
     private func changeUsername(withUsername username: String) {
         UserDefaults.standard.setValue(username, forKey: Consts.usernameDefaultKey)

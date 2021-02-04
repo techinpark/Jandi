@@ -9,6 +9,7 @@
 "wellcome_user_message" = "👋 Hello,  @${username}";
 "refresh" = "⏳ Refresh";
 "change_username" = "⚙️ Change username";
+"help" = "🐛 Bug Report";
 "textfield_placeholder" = "GitHub username";
 "username_description" = "Set username";
 "change_username_description" = "Change username";
