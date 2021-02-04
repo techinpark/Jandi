@@ -9,6 +9,7 @@
 "wellcome_user_message" = "👋 안녕,  @${username}";
 "refresh" = "⏳ 새로고침";
 "change_username" = "⚙️ 아이디 변경";
+"help" = "🐛 버그 제보하기";
 "textfield_placeholder" = "Github 아이디";
 "username_description" = "아이디를 입력해주세요";
 "change_username_description" = "아이디를 변경합니다";
