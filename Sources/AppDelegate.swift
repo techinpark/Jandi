@@ -221,11 +221,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func parseHTML(html: String) {
         do {
-            let doc = try SwiftSoup.parse(html)
-            let days = try doc.getElementsByTag(ParseKeys.rect)
-            let weekend = days.suffix(Consts.fetchCount)
-            guard let today = days.last() else { return }
+            let doc: Document = try SwiftSoup.parse(html)
+            let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)
+            let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
 
+            let weekend = days.suffix(Consts.fetchCount)
+            guard let today = days.last else { return }
+            
             _ = weekend.map {
                 guard let attr = $0.getAttributes() else { return }
                 let date: String = attr.get(key: ParseKeys.date)
