@@ -249,6 +249,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
+                dateFormatter.locale = Locale.current
+                dateFormatter.timeZone = TimeZone.current
 
                 let dateForWeekend = dateFormatter.date(from: date)
                 guard let weekend = dateForWeekend?.dayOfWeek() else { return }
@@ -258,15 +260,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let statusText = "\(emoji) \(date) (\(weekend)) - \(count)"
                 let menuItem = NSMenuItem(title: statusText, action: nil, keyEquivalent: "")
 
-                if date != today.getAttributes()?.get(key: ParseKeys.date) {
-                    let attributes = (count == .zero) ? Attributes.red : Attributes.green
-                    menuItem.attributedTitle = NSAttributedString(string: statusText,
-                                                                  attributes: attributes)
-                    menuItem.isEnabled = true
-                    menuItem.tag = Consts.contributionTag
+                let attributes = (count == .zero) ? Attributes.red : Attributes.green
+                menuItem.attributedTitle = NSAttributedString(string: statusText,
+                                                              attributes: attributes)
+                menuItem.isEnabled = true
+                menuItem.tag = Consts.contributionTag
 
-                    self.menu.insertItem(menuItem, at: .zero)
-                }
+                self.menu.insertItem(menuItem, at: .zero)
             }
 
             guard let attrs = today.getAttributes() else {
