@@ -9,7 +9,7 @@
 
 ## Introdution :mag: 
 
-🌱 Everyday check easily your github contributions count in macOS status bar, written in Swift 5.0. 
+🌱 Check your GitHub contributions easily from the MacOS status bar. Written in Swift 5.0
 
 ## Preview 👀
 ![](./.github/images/preview.png)
