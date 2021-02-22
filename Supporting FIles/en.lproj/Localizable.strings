@@ -7,7 +7,7 @@
 */
 
 "wellcome_user_message" = "👋 Hello,  @${username} ${withFriend}";
-"with_friend" = "\nwith @${username}"
+"with_friend" = "\nwith @${username}";
 "refresh" = "⏳ Refresh";
 "change_username" = "⚙️ Change username";
 "change_friend_username" = "🤝 Change Friend username";
@@ -18,7 +18,7 @@
 "username_description" = "Set username";
 "change_username_description" = "Change username";
 "information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
-"friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions."
+"friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions.";
 "ok" = "Okay";
 "cancel" = "Cancel";
 "error" = "⚠️ Error";
