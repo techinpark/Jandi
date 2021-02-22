@@ -9,47 +9,6 @@ import Cocoa
 import SwiftSoup
 import Then
 
-// MARK: Contribute Data Class
-
-class ContributeData{
-    let count : Int
-    let weekend, date : String
-    private var friendContributeData : ContributeData?
-    
-    init(count: Int, weekend: String, date: String) {
-            self.count   = count
-            self.weekend = weekend
-            self.date  = date
-        }
-    
-    public func showStatusDetail() -> String {
-        let emoji = count.getEmoji()
-        var textString = "\(date) (\(weekend)) - \(emoji) \(count)"
-        
-        if self.friendContributeData != nil {
-            guard let friendContributeData = self.friendContributeData else {return textString}
-            textString += " vs \(friendContributeData.count) \(friendContributeData.count.getEmoji())"
-        }
-        return textString
-    }
-    
-    public func showStatusBar() -> String {
-        let emoji = count.getEmoji()
-        var textString = "\(emoji) \(count)"
-        
-        if self.friendContributeData != nil {
-            guard let friendContributeData = self.friendContributeData else {return textString}
-            textString += " vs \(friendContributeData.count) \(friendContributeData.count.getEmoji())"
-        }
-        return textString
-    }
-    
-    public func merge(contributeData: ContributeData) {
-        self.friendContributeData = contributeData
-    }
-}
-
-
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -62,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    private var myContributes: [ContributeData] = [];
+    private var myContributes: [ContributeData] = []
     private var friendContributes: [ContributeData] = []
 
 
@@ -160,8 +119,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             withFriend = Localized.withFriend.replacingOccurrences(of: "${username}", with: friendUsername)
         }
         
-        let title = Localized.hello.replacingOccurrences(of: "${username}", with: username).replacingOccurrences(of: "${withFriend}", with: withFriend)
-        userMenuItem.attributedTitle = NSAttributedString(string: title)
+        let userMenuItemTitle = Localized.hello.replacingOccurrences(of: "${username}", with: username).replacingOccurrences(of: "${withFriend}", with: withFriend)
+        userMenuItem.attributedTitle = NSAttributedString(string: userMenuItemTitle)
+        
+        let friendMenuItemTitle = self.friendUsername.isEmpty ? Localized.set_friend_username : Localized.change_friend_username
+        friendMenuItem.title = friendMenuItemTitle
+        
+        RemoveFriendMenuItem.isHidden = self.friendUsername.isEmpty
     }
 
     private func showChangeUsernameAlert() {
@@ -206,7 +170,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.alertStyle = .informational
         alert.accessoryView = friendUsernameTextField
         alert.addButton(withTitle: Localized.ok)
-
+        alert.addButton(withTitle: Localized.cancel)
         alert.window.initialFirstResponder = alert.accessoryView
 
         if alert.runModal() == .alertFirstButtonReturn {
@@ -273,6 +237,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func removeFriendinfo(){
+        UserDefaults.standard.setValue("", forKey: Consts.friendUsernameDefaultKey)
         self.friendUsername = ""
         self.friendContributes = []
         
@@ -318,47 +283,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             for (myContribute, friendContribute) in contributes{
                 myContribute.merge(contributeData: friendContribute)
                 
-                let statusText = myContribute.showStatusDetail()
-                let menuItem = NSMenuItem(title: statusText, action: nil, keyEquivalent: "")
-
-                let attributes = (myContribute.count == .zero) ? Attributes.red : Attributes.green
-                menuItem.attributedTitle = NSAttributedString(string: statusText, attributes: attributes)
-                menuItem.isEnabled = true
-                menuItem.tag = Consts.contributionTag
+                let menuItem = NSMenuItem().then {
+                    $0.isEnabled = true
+                    $0.tag = Consts.contributionTag
+                    $0.attributedTitle = myContribute.getStatusDetailAttributedString()
+                }
 
                 self.menu.insertItem(menuItem, at: .zero)
             }
             
-            
-            guard let myLastContribute = self.myContributes.last else {return}
-            guard let friendLastContribute = self.friendContributes.last else {return}
+            guard let myLastContribute = self.myContributes.last else { return }
+            guard let friendLastContribute = self.friendContributes.last else { return }
             myLastContribute.merge(contributeData: friendLastContribute)
             DispatchQueue.main.async {
-                let textString = myLastContribute.showStatusBar()
-                let attributes = (myLastContribute.count == .zero) ? Attributes.red : Attributes.green
-                self.statusItem?.button?.attributedTitle = NSAttributedString(string: textString, attributes: attributes)
+                self.statusItem?.button?.attributedTitle = myLastContribute.getStatusBarAttributedString()
             }
             
         } else {
-            for myContribute in self.myContributes{
-                let statusText = myContribute.showStatusDetail()
-                let menuItem = NSMenuItem(title: statusText, action: nil, keyEquivalent: "")
-
-                let attributes = (myContribute.count == .zero) ? Attributes.red : Attributes.green
-                menuItem.attributedTitle = NSAttributedString(string: statusText,
-                                                              attributes: attributes)
-                menuItem.isEnabled = true
-                menuItem.tag = Consts.contributionTag
+            for myContribute in self.myContributes {
+                
+                let menuItem = NSMenuItem().then {
+                    $0.isEnabled = true
+                    $0.tag = Consts.contributionTag
+                    $0.attributedTitle = myContribute.getStatusDetailAttributedString()
+                }
 
                 self.menu.insertItem(menuItem, at: .zero)
-                
             }
             
-            guard let lastContribute = self.myContributes.last else {return}
+            guard let lastContribute = self.myContributes.last else { return }
             DispatchQueue.main.async {
-                let textString = lastContribute.showStatusBar()
-                let attributes = (lastContribute.count == .zero) ? Attributes.red : Attributes.green
-                self.statusItem?.button?.attributedTitle = NSAttributedString(string: textString, attributes: attributes)
+                self.statusItem?.button?.attributedTitle = lastContribute.getStatusBarAttributedString()
             }
         }
     }
@@ -379,7 +334,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func fetchContributionsByUserame(username: String, isFriend: Bool = false, group: DispatchGroup? = nil ) {
-        guard let targetURL = URL(string: "https://github.com/users/\(username)/contributions") else {return}
+        guard let targetURL = URL(string: "https://github.com/users/\(username)/contributions") else { return }
         URLSession.shared.dataTask(with: targetURL) { [weak self] data, response, error in
             guard let self = self else { return }
 
@@ -404,7 +359,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             
             let contributeDataList = self.parseHtmltoData(html: html)
-            if isFriend{
+            if isFriend {
                 self.friendContributes = contributeDataList
             } else{
                 self.myContributes = contributeDataList
@@ -420,7 +375,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     private func mapFunction(ele : Element) -> ContributeData {
-        guard let attr = ele.getAttributes() else {return ContributeData(count: 0, weekend: "", date: "")}
+        guard let attr = ele.getAttributes() else { return ContributeData(count: 0, weekend: "", date: "") }
         let date: String = attr.get(key: ParseKeys.date)
 
         let dateFormatter = DateFormatter()
@@ -435,7 +390,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return ContributeData(count: count, weekend: weekend, date: date)
     }
     
-    private func parseHtmltoData(html: String) -> [ContributeData]{
+    private func parseHtmltoData(html: String) -> [ContributeData] {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)

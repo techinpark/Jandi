@@ -11,6 +11,7 @@
 "refresh" = "⏳ 새로고침";
 "change_username" = "⚙️ 아이디 변경";
 "change_friend_username" = "🤝 친구 아이디 변경";
+"set_friend_username" = "🤝 친구 아이디 설정";
 "remove_friend_username" = "🙋‍♂️ 친구 아이디 제거";
 "help" = "🐛 버그 제보하기";
 "textfield_placeholder" = "Github 아이디";

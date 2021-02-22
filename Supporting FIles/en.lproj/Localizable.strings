@@ -11,6 +11,7 @@
 "refresh" = "⏳ Refresh";
 "change_username" = "⚙️ Change username";
 "change_friend_username" = "🤝 Change Friend username";
+"set_friend_username" = "🤝 Set Friend username";
 "remove_friend_username" = "🙋‍♂️ Remove Friend username";
 "help" = "🐛 Bug Report";
 "textfield_placeholder" = "GitHub username";

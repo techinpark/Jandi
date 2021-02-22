@@ -14,6 +14,7 @@ enum Localized {
     static let refresh = NSLocalizedString("refresh", comment: "refresh")
     static let changeUsername = NSLocalizedString("change_username", comment: "Change username")
     static let change_friend_username = NSLocalizedString("change_friend_username", comment: "Change friend username")
+    static let set_friend_username = NSLocalizedString("set_friend_username", comment: "Set friend username")
     static let remove_friend_username = NSLocalizedString("remove_friend_username", comment: "Remove friend username")
     static let help = NSLocalizedString("help", comment: "help")
     static let textFieldPlaceholder = NSLocalizedString("textfield_placeholder", comment: "Github username")
