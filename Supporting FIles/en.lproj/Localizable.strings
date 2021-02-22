@@ -6,14 +6,19 @@
   
 */
 
-"wellcome_user_message" = "👋 Hello,  @${username}";
+"wellcome_user_message" = "👋 Hello,  @${username} ${withFriend}";
+"with_friend" = "\nwith @${username}";
 "refresh" = "⏳ Refresh";
 "change_username" = "⚙️ Change username";
+"change_friend_username" = "🤝 Change Friend username";
+"set_friend_username" = "🤝 Set Friend username";
+"remove_friend_username" = "🙋‍♂️ Remove Friend username";
 "help" = "🐛 Bug Report";
 "textfield_placeholder" = "GitHub username";
 "username_description" = "Set username";
 "change_username_description" = "Change username";
 "information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
+"friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions.";
 "ok" = "Okay";
 "cancel" = "Cancel";
 "error" = "⚠️ Error";

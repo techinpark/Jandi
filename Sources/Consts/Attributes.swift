@@ -15,6 +15,18 @@ enum Attributes {
     static let red: [NSAttributedString.Key: Any] = [
         .foregroundColor: Colors.red,
     ]
+    
+    static let blue: [NSAttributedString.Key: Any] = [
+        .foregroundColor: Colors.blue,
+    ]
+    
+    static let black: [NSAttributedString.Key: Any] = [
+        .foregroundColor: Colors.black,
+    ]
+    
+    static let white: [NSAttributedString.Key: Any] = [
+        .foregroundColor: Colors.white,
+    ]
 }
 
 

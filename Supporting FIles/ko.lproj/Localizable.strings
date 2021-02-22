@@ -6,14 +6,19 @@
   
 */
 
-"wellcome_user_message" = "👋 안녕,  @${username}";
+"wellcome_user_message" = "👋 안녕,  @${username} ${withFriend}";
+"with_friend" = "\n @${username}와 함께";
 "refresh" = "⏳ 새로고침";
 "change_username" = "⚙️ 아이디 변경";
+"change_friend_username" = "🤝 친구 아이디 변경";
+"set_friend_username" = "🤝 친구 아이디 설정";
+"remove_friend_username" = "🙋‍♂️ 친구 아이디 제거";
 "help" = "🐛 버그 제보하기";
 "textfield_placeholder" = "Github 아이디";
 "username_description" = "아이디를 입력해주세요";
 "change_username_description" = "아이디를 변경합니다";
 "information" = "Github 아이디를 입력해주세요.\n입력해주신 정보를 기반으로 커밋정보를 가져옵니다";
+"friend_information" = "친구의 Github 아이디를 입력해주세요. \n입력해주신 정보를 기반으로 친구의 커밋정보를 가져옵니다";
 "ok" = "확인";
 "cancel" = "취소";
 "error" = "⚠️ 오류";
