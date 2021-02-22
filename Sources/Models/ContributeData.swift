@@ -19,7 +19,15 @@ class ContributeData {
             self.date  = date
         }
     
-    public func showStatusDetail() -> String {
+    private func getAttributes() -> [NSAttributedString.Key : Any] {
+        return (count == .zero) ? Attributes.red : Attributes.green
+    }
+    
+    public func merge(contributeData: ContributeData) {
+        self.friendContributeData = contributeData
+    }
+    
+    public func getStatusDetailString() -> String {
         let emoji = count.getEmoji()
         var textString = "\(date) (\(weekend)) - \(emoji) \(count)"
         
@@ -30,9 +38,18 @@ class ContributeData {
         return textString
     }
     
-    func getAttributes() -> [NSAttributedString.Key : Any] {
-        return (count == .zero) ? Attributes.red : Attributes.green
+    
+    public func getStatusBarString() -> String {
+        let emoji = count.getEmoji()
+        var textString = "\(emoji) \(count)"
+        
+        if self.friendContributeData != nil {
+            guard let friendContributeData = self.friendContributeData else {return textString}
+            textString += " vs \(friendContributeData.count) \(friendContributeData.count.getEmoji())"
+        }
+        return textString
     }
+    
     
     public func getStatusDetailAttributedString() -> NSAttributedString {
         let statusDetailAttributedString = NSMutableAttributedString()
@@ -55,23 +72,7 @@ class ContributeData {
         return statusDetailAttributedString
     }
 
-    public func attributedString(textString: String) -> NSAttributedString {
-        let attributes = (count == .zero) ? Attributes.red : Attributes.green
-        return NSAttributedString(string: textString, attributes: attributes)
-    }
-    
 
-    public func showStatusBar() -> String {
-        let emoji = count.getEmoji()
-        var textString = "\(emoji) \(count)"
-        
-        if self.friendContributeData != nil {
-            guard let friendContributeData = self.friendContributeData else {return textString}
-            textString += " vs \(friendContributeData.count) \(friendContributeData.count.getEmoji())"
-        }
-        return textString
-    }
-    
     public func getStatusBarAttributedString() -> NSAttributedString {
         let statusDetailAttributedString = NSMutableAttributedString()
         let emoji = count.getEmoji()
@@ -93,7 +94,5 @@ class ContributeData {
         return statusDetailAttributedString
     }
     
-    public func merge(contributeData: ContributeData) {
-        self.friendContributeData = contributeData
-    }
+    
 }
