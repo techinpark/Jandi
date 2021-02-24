@@ -22,7 +22,7 @@ enum Localized {
     static let changeUsernameDescription = NSLocalizedString("change_username_description", comment: "Change username")
     static let information = NSLocalizedString("information", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
     static let friend_information = NSLocalizedString("friend_information", comment: "Enter your friend GitHub username. We'll fetch the number of contributions.")
-
+    static let streaks = NSLocalizedString("streaks", comment: "@${day} days from 1 commitment a day")
     static let ok = NSLocalizedString("ok", comment: "Okay")
     static let cancel = NSLocalizedString("cancel", comment: "cancel")
     static let error = NSLocalizedString("error", comment: "error")

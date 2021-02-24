@@ -19,6 +19,7 @@
 "change_username_description" = "Change username";
 "information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
 "friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions.";
+"streaks" = "current streaks ${day}days.";
 "ok" = "Okay";
 "cancel" = "Cancel";
 "error" = "⚠️ Error";
