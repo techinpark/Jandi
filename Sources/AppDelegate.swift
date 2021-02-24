@@ -370,12 +370,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             
             let contributeDataList = self.parseHtmltoData(html: html)
-            let streak = self.parseHtmltoDataForCount(html: html)
             if isFriend {
                 self.friendContributes = contributeDataList
             } else{
                 self.myContributes = contributeDataList
-                self.mystreaks = streak
+                self.mystreaks = self.parseHtmltoDataForCount(html: html)
             }
             
             if group != nil {
