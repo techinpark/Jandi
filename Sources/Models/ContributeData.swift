@@ -50,6 +50,18 @@ class ContributeData {
         return textString
     }
     
+    public func getStatusDetailAttributedStringLast() -> NSAttributedString {
+        let statusDetailAttributedString = NSMutableAttributedString()
+        let day = date.getDateFormat().timeAgoSince()
+        var attribute = Attributes.red
+        let textString = Localized.streaks.replacingOccurrences(of: "${day}", with: day)
+        if day != "0" {
+            attribute = Attributes.green
+        }
+        let attributedString = NSAttributedString(string: textString, attributes: attribute)
+        statusDetailAttributedString.append(attributedString)
+        return statusDetailAttributedString
+    }
     
     public func getStatusDetailAttributedString() -> NSAttributedString {
         let statusDetailAttributedString = NSMutableAttributedString()
