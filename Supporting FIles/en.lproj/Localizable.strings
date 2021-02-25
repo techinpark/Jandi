@@ -19,10 +19,10 @@
 "change_username_description" = "Change username";
 "information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
 "friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions.";
-"streakFirstStage" = "😢 I haven't planted Jandi yet.";
-"streakSecondStage" = "🌱 I planted my first Jandi today.";
-"streakThirdStage" = "🌿 It has been ${day} days since the Jandi sprouts.";
-"streakFourthStage" = "🌳 It's been ${day} days since the Jandi has grown well.";
+"streak_first_stage" = "😢 I haven't planted Jandi yet.";
+"streak_second_stage" = "🌱 I planted my first Jandi today.";
+"streak_third_stage" = "🌿 It has been ${day} days since the Jandi sprouts.";
+"streak_fourth_stage" = "🌳 It's been ${day} days since the Jandi has grown well.";
 "ok" = "Okay";
 "cancel" = "Cancel";
 "error" = "⚠️ Error";
