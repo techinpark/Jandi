@@ -44,12 +44,25 @@ class ContributeData {
         var textString = "\(emoji) \(count)"
         
         if self.friendContributeData != nil {
-            guard let friendContributeData = self.friendContributeData else {return textString}
+            guard let friendContributeData = self.friendContributeData else { return textString }
             textString += " vs \(friendContributeData.count) \(friendContributeData.count.getEmoji())"
         }
         return textString
     }
     
+    public func getStreaks() -> NSAttributedString {
+        let statusDetailAttributedString = NSMutableAttributedString()
+        guard let day = Int(date.getDateFormat().timeAgoSince()) else { return statusDetailAttributedString }
+        var attribute = Attributes.red
+        let textString = day.getStreaks()
+        if day > 0 {
+            attribute = Attributes.green
+        }
+        
+        let attributedString = NSAttributedString(string: textString, attributes: attribute)
+        statusDetailAttributedString.append(attributedString)
+        return statusDetailAttributedString
+    }
     
     public func getStatusDetailAttributedString() -> NSAttributedString {
         let statusDetailAttributedString = NSMutableAttributedString()

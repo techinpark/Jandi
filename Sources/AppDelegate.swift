@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var myContributes: [ContributeData] = []
     private var friendContributes: [ContributeData] = []
-
+    private var mystreaks: ContributeData = ContributeData(count: 0, weekend: "", date: "")
 
     private let userMenuItem = NSMenuItem().then {
         $0.title = Localized.hello
@@ -329,8 +329,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         group.notify(queue: .main){
             self.updateContributions()
+            self.fetchStreaks(self.mystreaks)
         }
         
+    }
+    
+    private func fetchStreaks(_ date: ContributeData) {
+        let menuItem = NSMenuItem().then {
+            $0.isEnabled = true
+            $0.tag = Consts.contributionTag
+            $0.attributedTitle = date.getStreaks()
+        }
+
+        self.menu.insertItem(.separator(), at: .zero)
+        self.menu.insertItem(menuItem, at: .zero)
     }
     
     private func fetchContributionsByUserame(username: String, isFriend: Bool = false, group: DispatchGroup? = nil ) {
@@ -363,6 +375,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.friendContributes = contributeDataList
             } else{
                 self.myContributes = contributeDataList
+                self.mystreaks = self.parseHtmltoDataForCount(html: html)
             }
             
             if group != nil {
@@ -395,14 +408,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let doc: Document = try SwiftSoup.parse(html)
             let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
-
             let weekend = days.suffix(Consts.fetchCount)
-            
             let contributeDataList = weekend.map(mapFunction)
             return contributeDataList
             
-    } catch {
+        } catch {
             return []
+        }
+    }
+    
+    
+    private func parseHtmltoDataForCount(html: String) -> ContributeData {
+        do {
+            let doc: Document = try SwiftSoup.parse(html)
+            let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)
+            let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
+            let count = days.suffix(Consts.fetchStreak)
+            var contributeLastDate = count.map(mapFunction)
+            contributeLastDate.sort{ $0.date > $1.date }
+            for date in contributeLastDate {
+                if date.count == .zero {
+                    return date
+                }
+            }
+            
+            return ContributeData(count: 0, weekend: "", date: "")
+        } catch {
+            return ContributeData(count: 0, weekend: "", date: "")
         }
     }
 
