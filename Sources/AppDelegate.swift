@@ -338,9 +338,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menuItem = NSMenuItem().then {
             $0.isEnabled = true
             $0.tag = Consts.contributionTag
-            $0.attributedTitle = date.getStatusDetailAttributedStringLast()
+            $0.attributedTitle = date.getStreaks()
         }
 
+        self.menu.insertItem(.separator(), at: .zero)
         self.menu.insertItem(menuItem, at: .zero)
     }
     
@@ -424,9 +425,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
             let count = days.suffix(Consts.fetchStreak)
             var contributeLastDate = count.map(mapFunction)
-            contributeLastDate.sort{($0.date > $1.date)}
+            contributeLastDate.sort{ $0.date > $1.date }
             for date in contributeLastDate {
-                if date.count == 0 {
+                if date.count == .zero {
                     return date
                 }
             }

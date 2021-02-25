@@ -12,8 +12,8 @@ extension String {
     public func getDateFormat() -> Date {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd"
-        
-        guard let timeDateFormat = dateFormat.date(from: self) else {return Date()}
+        dateFormat.timeZone = TimeZone(secondsFromGMT: 0)
+        guard let timeDateFormat = dateFormat.date(from: self) else { return Date() }
         
         return timeDateFormat
     }

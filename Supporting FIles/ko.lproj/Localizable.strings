@@ -19,7 +19,10 @@
 "change_username_description" = "아이디를 변경합니다";
 "information" = "Github 아이디를 입력해주세요.\n입력해주신 정보를 기반으로 커밋정보를 가져옵니다";
 "friend_information" = "친구의 Github 아이디를 입력해주세요. \n입력해주신 정보를 기반으로 친구의 커밋정보를 가져옵니다";
-"streaks" = "1일 1커밋을 시작한지 ${day}일째.";
+"streakFirstStage" = "😢 아직 잔디를 심지 못했어요.";
+"streakSecondStage" = "🌱 오늘 처음으로 잔디를 심었어요.";
+"streakThirdStage" = "🌿 잔디에 싹이 튼 지 ${day}일이 되었어요.";
+"streakFourthStage" = "🌳 잔디가 무럭무럭 자란지 ${day}일이 되었어요.";
 "ok" = "확인";
 "cancel" = "취소";
 "error" = "⚠️ 오류";

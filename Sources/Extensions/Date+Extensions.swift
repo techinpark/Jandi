@@ -20,11 +20,12 @@ extension Date {
     func timeAgoSince() -> String {
         let calendar = Calendar.current
         let now = Date()
+        
         let unitFlags: NSCalendar.Unit = [.day]
         let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
         
         guard let day = components.day else { return "0" }
-                
+        
         return "\(day)"
     }
 
