@@ -24,13 +24,13 @@ extension Int {
     func getStreaks() -> String {
         switch self {
         case 0:
-            return Localized.streak_first_stage
+            return Localized.streakFristStage
         case 1 ..< 4:
-            return Localized.streak_second_stage
+            return Localized.streakSecondStage
         case 4 ..< 10:
-            return Localized.streak_third_stage.replacingOccurrences(of: "${day}", with: self.description)
+            return Localized.streakThirdStage.replacingOccurrences(of: "${day}", with: self.description)
         default:
-            return Localized.streak_fourth_stage.replacingOccurrences(of: "${day}", with: self.description)
+            return Localized.streakForthStage.replacingOccurrences(of: "${day}", with: self.description)
         }
     }
 }

@@ -60,14 +60,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private let friendMenuItem = NSMenuItem().then {
-        $0.title = Localized.change_friend_username
+        $0.title = Localized.changeFriendUsername
         $0.action = #selector(onChangeFriendUsernameClick)
         $0.tag = 6
         $0.keyEquivalent = "f"
     }
     
     private let RemoveFriendMenuItem = NSMenuItem().then {
-        $0.title = Localized.remove_friend_username
+        $0.title = Localized.removeFriendUsername
         $0.action = #selector(onRemoveFriendUsernameClick)
         $0.tag = 6
         $0.keyEquivalent = "d"
@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let userMenuItemTitle = Localized.hello.replacingOccurrences(of: "${username}", with: username).replacingOccurrences(of: "${withFriend}", with: withFriend)
         userMenuItem.attributedTitle = NSAttributedString(string: userMenuItemTitle)
         
-        let friendMenuItemTitle = self.friendUsername.isEmpty ? Localized.set_friend_username : Localized.change_friend_username
+        let friendMenuItemTitle = self.friendUsername.isEmpty ? Localized.setFriendUsername : Localized.changeFriendUsername
         friendMenuItem.title = friendMenuItemTitle
         
         RemoveFriendMenuItem.isHidden = self.friendUsername.isEmpty
