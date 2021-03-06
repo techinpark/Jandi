@@ -20,12 +20,17 @@ enum Localized {
     static let textFieldPlaceholder = NSLocalizedString("textfield_placeholder", comment: "Github username")
     static let setUsernameDescription = NSLocalizedString("username_description", comment: "Set username")
     static let changeUsernameDescription = NSLocalizedString("change_username_description", comment: "Change username")
+    static let autoLaunch = NSLocalizedString("auto_launch", comment: "Automatically start Jandi at login")
     static let information = NSLocalizedString("information", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
     static let friend_information = NSLocalizedString("friend_information", comment: "Enter your friend GitHub username. We'll fetch the number of contributions.")
+    static let setting = NSLocalizedString("setting", comment: "Preferences")
+    static let settingTitle = NSLocalizedString("setting_title", comment: "Preferences Title")
+    
     static let streak_first_stage = NSLocalizedString("streak_first_stage", comment: "streak stage 1")
     static let streak_second_stage = NSLocalizedString("streak_second_stage", comment: "streak stage 2")
     static let streak_third_stage = NSLocalizedString("streak_third_stage", comment: "streak stage 3")
     static let streak_fourth_stage = NSLocalizedString("streak_fourth_stage", comment: "streak stage 4")
+    
     static let ok = NSLocalizedString("ok", comment: "Okay")
     static let cancel = NSLocalizedString("cancel", comment: "cancel")
     static let error = NSLocalizedString("error", comment: "error")

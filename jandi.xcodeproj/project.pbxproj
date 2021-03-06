@@ -20,6 +20,7 @@
 		ED18259525C40ACC00FCD100 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = ED18259425C40ACC00FCD100 /* Then */; };
 		ED18259C25C4420A00FCD100 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18259B25C4420A00FCD100 /* Int+Extensions.swift */; };
 		ED1825A025C4422D00FCD100 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18259F25C4422D00FCD100 /* Date+Extensions.swift */; };
+		ED33D3CC25F3805400C18DE9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = ED33D3CB25F3805400C18DE9 /* LaunchAtLogin */; };
 		ED3FF1F225E3EEAA008CBD34 /* ContributeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF1F125E3EEA1008CBD34 /* ContributeData.swift */; };
 		ED8F6FE425C461320099D861 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED8F6FE625C461320099D861 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED18259125C4098C00FCD100 /* SwiftSoup in Frameworks */,
+				ED33D3CC25F3805400C18DE9 /* LaunchAtLogin in Frameworks */,
 				ED18259525C40ACC00FCD100 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +140,7 @@
 				ED18257725C4096400FCD100 /* Sources */,
 				ED18257825C4096400FCD100 /* Frameworks */,
 				ED18257925C4096400FCD100 /* Resources */,
+				ED33D3CE25F3808B00C18DE9 /* LaunchAtLogin */,
 			);
 			buildRules = (
 			);
@@ -147,6 +150,7 @@
 			packageProductDependencies = (
 				ED18259025C4098C00FCD100 /* SwiftSoup */,
 				ED18259425C40ACC00FCD100 /* Then */,
+				ED33D3CB25F3805400C18DE9 /* LaunchAtLogin */,
 			);
 			productName = jandi;
 			productReference = ED18257B25C4096400FCD100 /* jandi.app */;
@@ -179,6 +183,7 @@
 			packageReferences = (
 				ED18258F25C4098C00FCD100 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				ED18259325C40ACC00FCD100 /* XCRemoteSwiftPackageReference "Then" */,
+				ED33D3CA25F3805400C18DE9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = ED18257C25C4096400FCD100 /* Products */;
 			projectDirPath = "";
@@ -201,6 +206,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ED33D3CE25F3808B00C18DE9 /* LaunchAtLogin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LaunchAtLogin;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ED18257725C4096400FCD100 /* Sources */ = {
@@ -369,7 +395,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Sources/jandi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = U6GQL8JQMT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
@@ -378,7 +404,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tmsae.jandi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -394,7 +420,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = U6GQL8JQMT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
@@ -403,7 +429,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tmsae.jandi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -450,6 +476,14 @@
 				minimumVersion = 2.7.0;
 			};
 		};
+		ED33D3CA25F3805400C18DE9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -462,6 +496,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ED18259325C40ACC00FCD100 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		ED33D3CB25F3805400C18DE9 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED33D3CA25F3805400C18DE9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

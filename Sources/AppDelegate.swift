@@ -8,6 +8,7 @@
 import Cocoa
 import SwiftSoup
 import Then
+import LaunchAtLogin
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -50,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         $0.keyEquivalent = ""
         $0.tag = 4
     }
-
+    
     private let quitMenuItem = NSMenuItem().then {
         $0.title = Localized.quit
         $0.action = #selector(onQuitClick)
@@ -70,6 +71,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         $0.action = #selector(onRemoveFriendUsernameClick)
         $0.tag = 6
         $0.keyEquivalent = "d"
+    }
+    
+    private let settingMenuItem = NSMenuItem().then {
+        $0.title = Localized.setting
+        $0.action = #selector(onSettingClick)
+        $0.keyEquivalent = "s"
+        $0.tag = 7
     }
 
     func applicationDidFinishLaunching(_: Notification) {
@@ -104,6 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(.separator())
         menu.addItem(refreshMenuItem)
         menu.addItem(changeUserMenuItem)
+        menu.addItem(settingMenuItem)
         menu.addItem(quitMenuItem)
         
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -126,6 +135,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         friendMenuItem.title = friendMenuItemTitle
         
         RemoveFriendMenuItem.isHidden = self.friendUsername.isEmpty
+    }
+    
+    private func showSettingAlert() {
+        let alert = NSAlert()
+        
+        alert.messageText = Localized.settingTitle
+        let button = NSButton(checkboxWithTitle: Localized.autoLaunch, target: nil, action: #selector(setupLauchToggle))
+        button.state = LaunchAtLogin.isEnabled ? .on : .off
+        alert.accessoryView = button
+        
+        if alert.runModal() == .alertFirstButtonReturn {
+            return
+        }
     }
 
     private func showChangeUsernameAlert() {
@@ -219,6 +241,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func onHelpClick() {
         let url = URL(string: "https://github.com/techinpark/Jandi")!
         NSWorkspace.shared.open(url)
+    }
+    
+    @objc func onSettingClick() {
+        showSettingAlert()
+    }
+    
+    @objc func setupLauchToggle() {
+        LaunchAtLogin.isEnabled.toggle()
     }
 
 

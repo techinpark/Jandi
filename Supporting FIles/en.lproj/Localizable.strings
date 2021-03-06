@@ -9,11 +9,12 @@
 "wellcome_user_message" = "👋 Hello,  @${username} ${withFriend}";
 "with_friend" = "\nwith @${username}";
 "refresh" = "⏳ Refresh";
-"change_username" = "⚙️ Change username";
+"change_username" = "🪄 Change username";
 "change_friend_username" = "🤝 Change Friend username";
 "set_friend_username" = "🤝 Set Friend username";
 "remove_friend_username" = "🙋‍♂️ Remove Friend username";
 "help" = "🐛 Bug Report";
+"auto_launch" = "Automatically start Jandi at login";
 "textfield_placeholder" = "GitHub username";
 "username_description" = "Set username";
 "change_username_description" = "Change username";
@@ -23,6 +24,8 @@
 "streak_second_stage" = "🌱 I planted my first Jandi today.";
 "streak_third_stage" = "🌿 It has been ${day} days since the Jandi sprouts.";
 "streak_fourth_stage" = "🌳 It's been ${day} days since the Jandi has grown well.";
+"setting" = "⚙️ Preferences";
+"setting_title" = "App Preferences";
 "ok" = "Okay";
 "cancel" = "Cancel";
 "error" = "⚠️ Error";

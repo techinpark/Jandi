@@ -9,11 +9,12 @@
 "wellcome_user_message" = "👋 안녕,  @${username} ${withFriend}";
 "with_friend" = "\n @${username}와 함께";
 "refresh" = "⏳ 새로고침";
-"change_username" = "⚙️ 아이디 변경";
+"change_username" = "🪄 아이디 변경";
 "change_friend_username" = "🤝 친구 아이디 변경";
 "set_friend_username" = "🤝 친구 아이디 설정";
 "remove_friend_username" = "🙋‍♂️ 친구 아이디 제거";
 "help" = "🐛 버그 제보하기";
+"auto_launch" = "재시작시 자동 실행";
 "textfield_placeholder" = "Github 아이디";
 "username_description" = "아이디를 입력해주세요";
 "change_username_description" = "아이디를 변경합니다";
@@ -23,6 +24,8 @@
 "streak_second_stage" = "🌱 오늘 처음으로 잔디를 심었어요.";
 "streak_third_stage" = "🌿 잔디에 싹이 튼 지 ${day}일이 되었어요.";
 "streak_fourth_stage" = "🌳 잔디가 무럭무럭 자란지 ${day}일이 되었어요.";
+"setting" = "⚙️ 설정";
+"setting_title" = "환경설정";
 "ok" = "확인";
 "cancel" = "취소";
 "error" = "⚠️ 오류";
