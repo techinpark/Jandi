@@ -139,8 +139,8 @@
 			buildPhases = (
 				ED18257725C4096400FCD100 /* Sources */,
 				ED18257825C4096400FCD100 /* Frameworks */,
-				ED18257925C4096400FCD100 /* Resources */,
 				ED33D3CE25F3808B00C18DE9 /* LaunchAtLogin */,
+				ED18257925C4096400FCD100 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -224,7 +224,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
