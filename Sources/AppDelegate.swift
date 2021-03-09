@@ -238,7 +238,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
       if alert.runModal() == .alertFirstButtonReturn {
           let goal = goalTextField.integerValue
-          changeGaol(with: goal)
+          changeGoal(with: goal)
       }
   }
 
@@ -322,11 +322,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupRefreshTimer()
     }
 
-  private func changeGaol(with goal: Int) {
-      UserDefaults.standard.setValue(goal, forKey: Consts.goalDefaultKey)
-      self.goal = UserDefaults.standard.integer(forKey: Consts.goalDefaultKey)
+    private func changeGoal(with goal: Int) {
+        UserDefaults.standard.setValue(goal, forKey: Consts.goalDefaultKey)
+        self.goal = UserDefaults.standard.integer(forKey: Consts.goalDefaultKey)
 
-      refresh()
+        refresh()
   }
 
 

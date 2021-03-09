@@ -26,6 +26,10 @@ class ContributeData {
     private func getGoalAttributes(_ goal: Int) -> [NSAttributedString.Key : Any] {
         return (count >= goal) ? Attributes.green : Attributes.red
     }
+
+    private func getGoalCountString(_ goal: Int) -> String {
+        return String(goal - count)
+    }
     
     public func merge(contributeData: ContributeData) {
         self.friendContributeData = contributeData
@@ -118,7 +122,7 @@ class ContributeData {
         if count >= goal {
             textString = Localized.goalAccomplished
         } else {
-            textString = Localized.goalToGo.replacingOccurrences(of: "${commit}", with: String(goal - count))
+            textString = Localized.goalToGo.replacingOccurrences(of: "${commit}", with: getGoalCountString(goal))
         }
 
         let attributedString = NSAttributedString(string: textString, attributes: getGoalAttributes(goal))
