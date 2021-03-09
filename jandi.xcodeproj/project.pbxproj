@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F8218A725F657D5004919A6 /* IntegerValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8218A625F657D5004919A6 /* IntegerValueFormatter.swift */; };
 		C5077EF725E69288008F1BE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5077EF625E69288008F1BE8 /* String+Extensions.swift */; };
 		ED15D02E25C5600E00C04BEC /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED15D02D25C5600E00C04BEC /* Localized.swift */; };
 		ED15D03225C5604800C04BEC /* ParseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED15D03125C5604800C04BEC /* ParseKeys.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F8218A625F657D5004919A6 /* IntegerValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerValueFormatter.swift; sourceTree = "<group>"; };
 		C5077EF625E69288008F1BE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		ED15D02D25C5600E00C04BEC /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		ED15D03125C5604800C04BEC /* ParseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseKeys.swift; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4200F02A25F6FA1C00915106 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				3F8218A625F657D5004919A6 /* IntegerValueFormatter.swift */,
+			);
+			path = Customs;
+			sourceTree = "<group>";
+		};
 		ED15D02C25C5600200C04BEC /* Consts */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 				ED3FF1F025E3EEA1008CBD34 /* Models */,
 				ED15D02C25C5600200C04BEC /* Consts */,
 				ED18259A25C441FA00FCD100 /* Extensions */,
+				4200F02A25F6FA1C00915106 /* Customs */,
 				ED18257E25C4096400FCD100 /* AppDelegate.swift */,
 				ED18258225C4096600FCD100 /* Assets.xcassets */,
 				ED18258425C4096600FCD100 /* Main.storyboard */,
@@ -242,6 +253,7 @@
 				ED15D03825C5605E00C04BEC /* Colors.swift in Sources */,
 				ED1825A025C4422D00FCD100 /* Date+Extensions.swift in Sources */,
 				ED18257F25C4096400FCD100 /* AppDelegate.swift in Sources */,
+				3F8218A725F657D5004919A6 /* IntegerValueFormatter.swift in Sources */,
 				ED15D03225C5604800C04BEC /* ParseKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
