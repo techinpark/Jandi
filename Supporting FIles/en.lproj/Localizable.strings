@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   jandi
 
@@ -26,7 +26,8 @@
 "streak_first_stage" = "😢 I haven't planted Jandi yet.";
 "streak_second_stage" = "🌱 I planted my first Jandi today.";
 "streak_third_stage" = "🌿 It has been ${day} days since the Jandi sprouts.";
-"streak_fourth_stage" = "🌳 It's been ${day} days since the Jandi has grown well.";
+"streak_fourth_stage" = "🪴 It's been ${day} days since the Jandi has grown well.";
+"streak_fifth_stage" = "🌳 The Jandi grew and became a tree!";
 "goal_to_go" = "🏃 ${commit} commits to go";
 "goal_accomplished" = "✔️ Goal accomplished!";
 "setting" = "⚙️ Preferences";
