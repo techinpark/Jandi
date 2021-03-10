@@ -30,7 +30,8 @@ enum Localized {
     static let streakSecondStage = NSLocalizedString("streak_second_stage", comment: "streak stage 2")
     static let streakThirdStage = NSLocalizedString("streak_third_stage", comment: "streak stage 3")
     static let streakForthStage = NSLocalizedString("streak_fourth_stage", comment: "streak stage 4")
-    
+    static let streakFifthStage = NSLocalizedString("streak_fifth_stage", comment: "streak stage 5")
+
     static let ok = NSLocalizedString("ok", comment: "Okay")
     static let cancel = NSLocalizedString("cancel", comment: "cancel")
     static let error = NSLocalizedString("error", comment: "error")

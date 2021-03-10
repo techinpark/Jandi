@@ -25,9 +25,9 @@ extension Int {
         switch self {
         case 0:
             return Localized.streakFristStage
-        case 1 ..< 4:
+        case 1:
             return Localized.streakSecondStage
-        case 4 ..< 10:
+        case 2 ..< 30:
             return Localized.streakThirdStage.replacingOccurrences(of: "${day}", with: self.description)
         default:
             return Localized.streakForthStage.replacingOccurrences(of: "${day}", with: self.description)
