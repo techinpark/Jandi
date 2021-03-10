@@ -54,9 +54,12 @@ class ContributeData {
         let statusDetailAttributedString = NSMutableAttributedString()
         guard let day = Int(date.getDateFormat().timeAgoSince()) else { return statusDetailAttributedString }
         var attribute = Attributes.red
-        let textString = day.getStreaks()
+        var textString = day.getStreaks()
         if day > 0 {
             attribute = Attributes.green
+        }
+        if count == 1000 {
+            textString = Localized.streakFifthStage
         }
         
         let attributedString = NSAttributedString(string: textString, attributes: attribute)

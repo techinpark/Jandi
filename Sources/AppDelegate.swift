@@ -456,12 +456,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let count = days.suffix(Consts.fetchStreak)
             var contributeLastDate = count.map(mapFunction)
             contributeLastDate.sort{ $0.date > $1.date }
-            for date in contributeLastDate {
-                if date.count == .zero {
-                    return date
+            for index in 0 ..< contributeLastDate.count {
+                if contributeLastDate[index].count == .zero {
+                    return contributeLastDate[index]
+                }
+                if index == (contributeLastDate.count - 1) {
+                    return ContributeData(
+                        count: 1000,
+                        weekend: contributeLastDate[index].weekend,
+                        date: contributeLastDate[index].date
+                    )
                 }
             }
-            
             return ContributeData(count: 0, weekend: "", date: "")
         } catch {
             return ContributeData(count: 0, weekend: "", date: "")
