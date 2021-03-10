@@ -13,6 +13,7 @@
 "change_friend_username" = "🤝 Change Friend username";
 "set_friend_username" = "🤝 Set Friend username";
 "remove_friend_username" = "🙋‍♂️ Remove Friend username";
+"set_goal" = "🏁 Set Goal";
 "help" = "🐛 Bug Report";
 "auto_launch" = "Automatically start Jandi at login";
 "textfield_placeholder" = "GitHub username";
@@ -20,11 +21,15 @@
 "change_username_description" = "Change username";
 "information" = "Enter your GitHub username.\nWe’ll fetch the number of contributions.";
 "friend_information" = "Enter your friend GitHub username.\nWe'll fetch the number of contributions.";
+"goal" = "Please enter daily commit goals.";
+"goal_information" = "Let's set daily commit goals and accomplish them.";
 "streak_first_stage" = "😢 I haven't planted Jandi yet.";
 "streak_second_stage" = "🌱 I planted my first Jandi today.";
 "streak_third_stage" = "🌿 It has been ${day} days since the Jandi sprouts.";
 "streak_fourth_stage" = "🪴 It's been ${day} days since the Jandi has grown well.";
 "streak_fifth_stage" = "🌳 The Jandi grew and became a tree!";
+"goal_to_go" = "🏃 ${commit} commits to go";
+"goal_accomplished" = "✔️ Goal accomplished!";
 "setting" = "⚙️ Preferences";
 "setting_title" = "App Preferences";
 "ok" = "Okay";

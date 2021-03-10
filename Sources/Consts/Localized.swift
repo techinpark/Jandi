@@ -16,6 +16,7 @@ enum Localized {
     static let changeFriendUsername = NSLocalizedString("change_friend_username", comment: "Change friend username")
     static let setFriendUsername = NSLocalizedString("set_friend_username", comment: "Set friend username")
     static let removeFriendUsername = NSLocalizedString("remove_friend_username", comment: "Remove friend username")
+    static let setGoal = NSLocalizedString("set_goal", comment: "Set goal")
     static let help = NSLocalizedString("help", comment: "help")
     static let textFieldPlaceholder = NSLocalizedString("textfield_placeholder", comment: "Github username")
     static let setUsernameDescription = NSLocalizedString("username_description", comment: "Set username")
@@ -23,6 +24,8 @@ enum Localized {
     static let autoLaunch = NSLocalizedString("auto_launch", comment: "Automatically start Jandi at login")
     static let information = NSLocalizedString("information", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
     static let friend_information = NSLocalizedString("friend_information", comment: "Enter your friend GitHub username. We'll fetch the number of contributions.")
+    static let goal =  NSLocalizedString("goal", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
+    static let goalInformation =  NSLocalizedString("goal_information", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
     static let setting = NSLocalizedString("setting", comment: "Preferences")
     static let settingTitle = NSLocalizedString("setting_title", comment: "Preferences Title")
     
@@ -31,7 +34,9 @@ enum Localized {
     static let streakThirdStage = NSLocalizedString("streak_third_stage", comment: "streak stage 3")
     static let streakForthStage = NSLocalizedString("streak_fourth_stage", comment: "streak stage 4")
     static let streakFifthStage = NSLocalizedString("streak_fifth_stage", comment: "streak stage 5")
-
+    static let goalToGo = NSLocalizedString("goal_to_go", comment: "commits to go")
+    static let goalAccomplished = NSLocalizedString("goal_accomplished", comment: "Goal accomplished")
+    
     static let ok = NSLocalizedString("ok", comment: "Okay")
     static let cancel = NSLocalizedString("cancel", comment: "cancel")
     static let error = NSLocalizedString("error", comment: "error")

@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var refreshTimer: Timer?
     private var username = UserDefaults.standard.string(forKey: Consts.usernameDefaultKey) ?? ""
     private var friendUsername = UserDefaults.standard.string(forKey: Consts.friendUsernameDefaultKey) ?? ""
+    private var goal = UserDefaults.standard.integer(forKey: Consts.goalDefaultKey)
     private let menu = NSMenu().then {
         $0.title = ""
     }
@@ -80,6 +81,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         $0.tag = 7
     }
 
+    private let goalMenuItem = NSMenuItem().then {
+        $0.title = Localized.setGoal
+        $0.action = #selector(onChangeGoalClick)
+        $0.keyEquivalent = "g"
+        $0.tag = 8
+    }
+
+
     func applicationDidFinishLaunching(_: Notification) {
         
         setupUI()
@@ -109,6 +118,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(.separator())
         menu.addItem(friendMenuItem)
         menu.addItem(RemoveFriendMenuItem)
+        menu.addItem(.separator())
+        menu.addItem(goalMenuItem)
         menu.addItem(.separator())
         menu.addItem(refreshMenuItem)
         menu.addItem(changeUserMenuItem)
@@ -206,6 +217,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+  private func showChangeGoalAlert() {
+      let alert = NSAlert()
+      let goalTextField = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 20))
+      let formatter = IntegerValueFormatter()
+      goalTextField.formatter = formatter
+      goalTextField.placeholderString = String(self.goal)
+
+      alert.messageText = Localized.goal
+      alert.informativeText = Localized.goalInformation
+      alert.alertStyle = .informational
+      alert.accessoryView = goalTextField
+      alert.addButton(withTitle: Localized.ok)
+
+      if !(self.goal == 0) {
+          alert.addButton(withTitle: Localized.cancel)
+      }
+
+      alert.window.initialFirstResponder = alert.accessoryView
+
+      if alert.runModal() == .alertFirstButtonReturn {
+          let goal = goalTextField.integerValue
+          changeGoal(with: goal)
+      }
+  }
+
     private func showError() {
         DispatchQueue.main.async {
             self.statusItem?.button?.title = Localized.error
@@ -251,6 +287,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         LaunchAtLogin.isEnabled.toggle()
     }
 
+    @objc func onChangeGoalClick(){
+        showChangeGoalAlert()
+    }
 
     private func changeUsername(withUsername username: String) {
         UserDefaults.standard.setValue(username, forKey: Consts.usernameDefaultKey)
@@ -283,6 +322,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupRefreshTimer()
     }
 
+    private func changeGoal(with goal: Int) {
+        UserDefaults.standard.setValue(goal, forKey: Consts.goalDefaultKey)
+        self.goal = UserDefaults.standard.integer(forKey: Consts.goalDefaultKey)
+
+        refresh()
+  }
+
+
     private func setupRefreshTimer() {
         refreshTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Consts.refreshInterval * 60),
                                             repeats: true,
@@ -299,7 +346,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func removeAllItems() {
         _ = menu.items.map {
-            if $0.tag == Consts.contributionTag {
+            if $0.tag == Consts.contributionTag || $0.tag == Consts.goalTag {
                 self.menu.removeItem($0)
             }
         }
@@ -359,6 +406,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         group.notify(queue: .main){
             self.updateContributions()
+            if let lastContribute = self.myContributes.last, self.goal != 0 {
+                self.fetchGoal(self.goal, contribute: lastContribute)
+            }
             self.fetchStreaks(self.mystreaks)
         }
         
@@ -369,6 +419,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             $0.isEnabled = true
             $0.tag = Consts.contributionTag
             $0.attributedTitle = date.getStreaks()
+        }
+
+        self.menu.insertItem(.separator(), at: .zero)
+        self.menu.insertItem(menuItem, at: .zero)
+    }
+
+    private func fetchGoal(_ goal: Int, contribute: ContributeData) {
+        let menuItem = NSMenuItem().then {
+            $0.isEnabled = true
+            $0.tag = Consts.goalTag
+            $0.attributedTitle = contribute.getGoalAttributedString(goal: goal)
         }
 
         self.menu.insertItem(.separator(), at: .zero)
