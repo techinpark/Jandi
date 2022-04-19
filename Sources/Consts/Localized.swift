@@ -28,6 +28,7 @@ enum Localized {
     static let goalInformation =  NSLocalizedString("goal_information", comment: "Enter your GitHub username. We’ll fetch the number of contributions.")
     static let setting = NSLocalizedString("setting", comment: "Preferences")
     static let settingTitle = NSLocalizedString("setting_title", comment: "Preferences Title")
+    static let viewMyProfile = NSLocalizedString("view_my_profile", comment: "View my profile")
     
     static let streakFristStage = NSLocalizedString("streak_first_stage", comment: "streak stage 1")
     static let streakSecondStage = NSLocalizedString("streak_second_stage", comment: "streak stage 2")

@@ -80,12 +80,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         $0.keyEquivalent = "s"
         $0.tag = 7
     }
-
+    
     private let goalMenuItem = NSMenuItem().then {
         $0.title = Localized.setGoal
         $0.action = #selector(onChangeGoalClick)
         $0.keyEquivalent = "g"
         $0.tag = 8
+    }
+    
+    private let viewMyProfileItem = NSMenuItem().then {
+        $0.title = Localized.viewMyProfile
+        $0.action = #selector(viewMyProfileClick)
+        $0.tag = 10
     }
 
 
@@ -113,6 +119,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.addItem(.separator())
         menu.addItem(userMenuItem)
+        menu.addItem(viewMyProfileItem)
         menu.addItem(.separator())
         menu.addItem(helpMenuItem)
         menu.addItem(.separator())
@@ -276,6 +283,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func onHelpClick() {
         let url = URL(string: "https://github.com/techinpark/Jandi")!
+        NSWorkspace.shared.open(url)
+    }
+    
+    @objc func viewMyProfileClick() {
+        let url = URL(string: "https://github.com/" + (UserDefaults.standard.string(forKey: Consts.usernameDefaultKey) ?? ""))!
         NSWorkspace.shared.open(url)
     }
     
