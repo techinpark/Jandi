@@ -8,6 +8,7 @@
 
 "wellcome_user_message" = "👋 안녕,  @${username} ${withFriend}";
 "with_friend" = "\n @${username}와 함께";
+"view_my_profile" = "🏡 내 프로필 보기";
 "refresh" = "⏳ 새로고침";
 "change_username" = "🪄 아이디 변경";
 "change_friend_username" = "🤝 친구 아이디 변경";
