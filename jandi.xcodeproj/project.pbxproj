@@ -85,7 +85,7 @@
 		ED18257225C4096400FCD100 = {
 			isa = PBXGroup;
 			children = (
-				ED8F6FDF25C460DA0099D861 /* Supporting FIles */,
+				ED8F6FDF25C460DA0099D861 /* Supporting Files */,
 				ED18257D25C4096400FCD100 /* Sources */,
 				ED18257C25C4096400FCD100 /* Products */,
 			);
@@ -133,12 +133,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		ED8F6FDF25C460DA0099D861 /* Supporting FIles */ = {
+		ED8F6FDF25C460DA0099D861 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				ED8F6FE625C461320099D861 /* Localizable.strings */,
 			);
-			path = "Supporting FIles";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
