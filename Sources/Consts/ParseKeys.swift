@@ -9,6 +9,6 @@ import Foundation
 
 enum ParseKeys {
     static let date = "data-date"
-    static let contributionCount = "data-count"
+    static let contributionCount = "data-level"
     static let rect = "rect"
 }
