@@ -501,9 +501,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let dateForWeekend = dateFormatter.date(from: date)
         guard let weekend = dateForWeekend?.dayOfWeek() else { return ContributeData(count: 0, weekend: "", date: "")}
-        guard let count = Int(attr.get(key: ParseKeys.contributionCount)) else { return ContributeData(count: 0, weekend: "", date: "")}
         
-        return ContributeData(count: count, weekend: weekend, date: date)
+        do {
+            let countString = try selectCountFrom(str: ele.text())
+            guard let count = Int(countString) else { return ContributeData(count: 0, weekend: "", date: "") }
+            return ContributeData(count: count, weekend: weekend, date: date)
+        } catch {
+            return ContributeData(count: 0, weekend: "", date: "")
+        }
+    }
+    
+    private func selectCountFrom(str: String) -> String {
+        let pattern = "\\d+"
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            return "0"
+        }
+        let range = NSRange(location: 0, length: str.utf16.count)
+        if let match = regex.firstMatch(in: str, options: [], range: range) {
+            let value = (str as NSString).substring(with: match.range)
+            return value
+        }
+        return "0"
     }
     
     private func parseHtmltoData(html: String) -> [ContributeData] {
