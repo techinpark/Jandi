@@ -9,5 +9,5 @@ import Foundation
 
 enum ParseKeys {
     static let date = "data-date"
-    static let rect = "rect"
+    static let rect = "td"
 }
