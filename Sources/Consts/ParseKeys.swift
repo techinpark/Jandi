@@ -10,4 +10,5 @@ import Foundation
 enum ParseKeys {
     static let date = "data-date"
     static let rect = "td"
+    static let tooltip = "tool-tip"
 }
