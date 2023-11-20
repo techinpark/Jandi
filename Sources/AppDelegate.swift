@@ -533,7 +533,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let tooltips: Elements = try doc.getElementsByTag(ParseKeys.tooltip)
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
             let sortedDays = sortDaysByDate(days, with: isoDateFormatter)
-            
             let weekend = sortedDays.suffix(Consts.fetchCount)
             
             var tooltipsTextById = [String: String]()
@@ -544,7 +543,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             let updatedWeekend = weekend.map { element -> Element in
-                
                 let id = element.id()
                 if let tooltipText = tooltipsTextById[id] {
                     try? element.text(tooltipText)
