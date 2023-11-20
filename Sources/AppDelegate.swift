@@ -530,11 +530,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)
+            let tooltips: Elements = try doc.getElementsByTag(ParseKeys.tooltip)
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
             let sortedDays = sortDaysByDate(days, with: isoDateFormatter)
-
+            
             let weekend = sortedDays.suffix(Consts.fetchCount)
-            let contributeDataList = weekend.map(mapFunction)
+            
+            var tooltipsTextById = [String: String]()
+            for tooltip in tooltips.array() {
+                let id = try tooltip.attr("for")
+                let text = try tooltip.text()
+                tooltipsTextById[id] = text
+            }
+            
+            let updatedWeekend = weekend.map { element -> Element in
+                
+                let id = element.id()
+                if let tooltipText = tooltipsTextById[id] {
+                    try? element.text(tooltipText)
+                }
+                return element
+            }
+         
+            let contributeDataList = updatedWeekend.map(mapFunction)
             return contributeDataList
             
         } catch {
