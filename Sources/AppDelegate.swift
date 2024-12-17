@@ -449,8 +449,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func fetchContributionsByUserame(username: String, isFriend: Bool = false, group: DispatchGroup? = nil ) {
+		let config = URLSessionConfiguration.default
+		if #available(macOS 10.13, *) {
+			config.waitsForConnectivity = true
+		}
+
         guard let targetURL = URL(string: "https://github.com/users/\(username)/contributions") else { return }
-        URLSession.shared.dataTask(with: targetURL) { [weak self] data, response, error in
+        URLSession(configuration: config).dataTask(with: targetURL) { [weak self] data, response, error in
             guard let self = self else { return }
 
             if error != nil {
