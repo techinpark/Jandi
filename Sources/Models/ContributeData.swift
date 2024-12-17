@@ -60,14 +60,24 @@ class ContributeData {
     
     public func getStreaks() -> NSAttributedString {
         let statusDetailAttributedString = NSMutableAttributedString()
-        guard let day = Int(date.getDateFormat().timeAgoSince()) else { return statusDetailAttributedString }
         var attribute = Attributes.red
-        var textString = day.getStreaks()
-        if day > 0 {
+        var textString = ""
+
+        if count > 0 {
             attribute = Attributes.green
-        }
-        if count == 1000 {
-            textString = Localized.streakFifthStage
+            if count == 1 {
+                textString = Localized.streakSecondStage
+            } else if 2 <= count {
+                textString = Localized.streakThirdStage.replacingOccurrences(of: "${day}", with: String(count))
+            } else if count < 10 {
+                textString = Localized.streakThirdStage.replacingOccurrences(of: "${day}", with: String(count))
+            } else if count < 15 {
+                textString = Localized.streakForthStage.replacingOccurrences(of: "${day}", with: String(count))
+            } else {
+                textString = Localized.streakFifthStage.replacingOccurrences(of: "${day}", with: String(count))
+            }
+        } else {
+            textString = Localized.streakFristStage
         }
         
         let attributedString = NSAttributedString(string: textString, attributes: attribute)
