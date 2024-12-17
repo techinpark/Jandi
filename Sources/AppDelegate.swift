@@ -500,10 +500,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         dateFormatter.timeZone = TimeZone.current
 
         let dateForWeekend = dateFormatter.date(from: date)
-        guard let weekend = dateForWeekend?.dayOfWeek() else { return ContributeData(count: 0, weekend: "", date: "")}
+        guard let weekend = dateForWeekend?.dayOfWeek() else {
+            return ContributeData(count: 0, weekend: "", date: "")
+        }
         
         do {
-            if let count = try selectCountFrom(sentence: ele.text()) {
+            let text = try ele.text()
+            if let count = selectCountFrom(sentence: text) {
                 return ContributeData(count: count, weekend: weekend, date: date)
             } else {
                 return ContributeData(count: 0, weekend: "", date: "")
@@ -545,7 +548,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let updatedWeekend = weekend.map { element -> Element in
                 let id = element.id()
                 if let tooltipText = tooltipsTextById[id] {
-                    try? element.text(tooltipText)
+                    _ = try? element.text(tooltipText)
                 }
                 return element
             }
@@ -574,26 +577,66 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let rects: Elements = try doc.getElementsByTag(ParseKeys.rect)
+            let tooltips: Elements = try doc.getElementsByTag(ParseKeys.tooltip)
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
-            let count = days.suffix(Consts.fetchStreak)
-            var contributeLastDate = count.map(mapFunction)
-            contributeLastDate.sort{ $0.date > $1.date }
-            for index in 0 ..< contributeLastDate.count {
-                if contributeLastDate[index].count == .zero {
-                    return contributeLastDate[index]
+            
+            var tooltipsTextById = [String: String]()
+            for tooltip in tooltips.array() {
+                let id = try tooltip.attr("for")
+                let text = try tooltip.text()
+                tooltipsTextById[id] = text
+            }
+            
+            let sortedDays = days.sorted { (element1, element2) -> Bool in
+                guard let date1 = try? element1.attr(ParseKeys.date),
+                      let date2 = try? element2.attr(ParseKeys.date) else {
+                    return false
                 }
-                if index == (contributeLastDate.count - 1) {
-                    return ContributeData(
-                        count: 1000,
-                        weekend: contributeLastDate[index].weekend,
-                        date: contributeLastDate[index].date
-                    )
+                return date1 < date2
+            }
+            
+            let updatedDays = sortedDays.map { element -> Element in
+                let id = element.id()
+                if let tooltipText = tooltipsTextById[id] {
+                   _ = try? element.text(tooltipText)
+                }
+                return element
+            }
+            
+            var currentStreak = 0
+            let today = Calendar.current.startOfDay(for: Date())
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            for day in updatedDays.reversed() {
+                let contribute = mapFunction(ele: day)
+                guard let contributionDate = dateFormatter.date(from: contribute.date) else { continue }
+                
+                let dayDifference = Calendar.current.dateComponents([.day], from: contributionDate, to: today).day ?? 0
+                
+                if currentStreak == 0 && dayDifference > 1 {
+                    break
+                }
+                
+                if contribute.count > 0 {
+                    currentStreak += 1
+                } else {
+                    break
                 }
             }
-            return ContributeData(count: 0, weekend: "", date: "")
+            
+            if let lastDay = updatedDays.last {
+                let lastContribute = mapFunction(ele: lastDay)
+                return ContributeData(
+                    count: currentStreak,
+                    weekend: lastContribute.weekend,
+                    date: lastContribute.date
+                )
+            }
         } catch {
-            return ContributeData(count: 0, weekend: "", date: "")
+            print("Failed to parse streaks data: \(error)")
         }
+        return ContributeData(count: 0, weekend: "", date: "")
     }
 
 }
